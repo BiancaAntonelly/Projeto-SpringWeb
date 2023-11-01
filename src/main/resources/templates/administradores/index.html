@@ -37,17 +37,14 @@
                                             <th></th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>                                     <tr>
-
-                                    <tbody>                                     <tr>
-
+                                    <tbody>
                                     <tr th:each="administrador : ${administradores}">
                                         <td th:text="${administrador.id}"></td>
                                         <td th:text="${administrador.nome}"></td>
                                         <td th:text="${administrador.email}"></td>
                                         <td th:text="${administrador.login}"></td>
                                         <td><a href="#" class="btn btn-warning">Alterar</a></td>
-                                        <td><a href="#" class="btn btn-danger">Excluir</a></td>
+                                    <td><a href="#" th:onclick="'if(confirm(\'Confirma ?\')) { window.location.href = \'' + @{/administradores{id}(id=${administrador.id})} + '/excluir\' } '" class="btn btn-danger">Excluir</a></td>
                                     </tr>
 
                                     </tbody>

@@ -5,7 +5,10 @@ import com.web.SpringWeb.repository.AdministradoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -28,5 +31,15 @@ public class AdministradoresController {
     @GetMapping("/administradores/novo")
     public String novo(){
       return "administradores/novo";
+    }
+    @PostMapping("/administradores/criar")
+    public String criar(Administrador criarAdministrador){
+        administradoresRepository.save(criarAdministrador);
+        return "redirect:/administradores";
+    }
+    @GetMapping("/administradores{id}/excluir")
+    public String excluir(@PathVariable int id){
+        administradoresRepository.deleteById(id);
+        return "redirect:/administradores";
     }
 }
