@@ -4,29 +4,29 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Novo Usuário</h1>
+    <h1 class="h3 mb-2 text-gray-800">Edição de Usuário</h1>
     <p class="mb-4">
-        Aqui iremos cadastrar um novo usuário contendo nome, email, login e senha.
+        Aqui iremos editar um usuário.
     </p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4" style="padding: 30px;">
-        <form method="POST", action="/administradores/criar" onsubmit="return confirm('Confirma ação')" >
+        <form method="POST", th:action="@{'/administradores/' + ${administrador?.id} + '/alterar'}" >
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" required id="nome" name="nome" placeholder="Digite seu nome">
+                <input type="text" class="form-control" th:value="${administrador?.nome}" required id="nome" name="nome" placeholder="Digite seu nome">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" required id="email" name="email" placeholder="Digite seu email">
+                <input type="email" class="form-control" th:value="${administrador?.email}" required id="email" name="email" placeholder="Digite seu email">
             </div>
             <div class="form-group">
                 <label for="login">Login</label>
-                <input type="text" class="form-control" required id="login" name="login" placeholder="Digite seu login">
+                <input type="text" class="form-control"  th:value="${administrador?.login}" required id="login" name="login" placeholder="Digite seu login">
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" required id="senha" name="senha" placeholder="Digite sua senha">
+                <input type="password" class="form-control"  th:value="${administrador?.senha}" required id="senha" name="senha" placeholder="Digite sua senha">
             </div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
